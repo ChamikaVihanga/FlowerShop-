@@ -1,0 +1,23 @@
+﻿<MudGrid>
+    <MudPaper>
+        <MudItem xs="12">
+            <MudPaper Elevation="1" Class="d-flex align-center justify-center mud-width-full ">
+                <MudCarousel Class="mud-width-full rounded-3" Style="height:350px; width:max-content;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                    <MudCarouselItem>
+                        <div class="d-flex" style="height:100%">
+                            <MudImage Src="https://wallpapercave.com/wp/wp5442267.jpg" />
+                        </div>
+                    </MudCarouselItem>
+                </MudCarousel>
+            </MudPaper>
+        </MudItem>
+    </MudPaper>
+</MudGrid>
+
+@code {
+
+    private bool arrows = false;
+    private bool bullets = false;
+    private bool enableSwipeGesture = true;
+    private bool autocycle = true;
+}

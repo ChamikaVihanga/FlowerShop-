@@ -1,0 +1,58 @@
+﻿@page "/Customer"
+@using TestFlower01.Shared.Entities
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudPaper Elevation="0">
+            <MudItem xs="12">
+                <MudPaper Elevation="5" Class="d-flex align-center justify-center mud-width-full py-4">
+                    <MudButton Href="/" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Home</MudButton>
+                    <MudButton Href="Flower" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> -    Flowers    -</MudButton>
+                    <MudButton Href="Oder" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Oder - </MudButton>
+                    <MudButton Href="Customer" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Customer </MudButton>
+                </MudPaper>
+            </MudItem>
+
+            <br />
+            <br />
+            <MudItem xs="12">
+
+            </MudItem>
+            <MudItem xs="12" Class="d-flex align-center justify-center mud-width-full py-4">
+                <MudCard Elevation="0">
+
+                    <MudText Align="Align.Center" style="font-family: 'Righteous', cursive; font-size:60px">
+                        <b>Customer Register</b>
+                    </MudText>
+                    <MudContainer>
+                        <MudItem xs="12" Style="text-align:center" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField T="string" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField T="string" Label="Address" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField T="string" Label="Email" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField T="string" Label="Contact Number" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class="d-flex align-center justify-center mud-width-full mt-5">
+                            <MudButton Variant="Variant.Filled" Color="Color.Success"> Register Customer </MudButton>
+                        </MudItem>
+                    </MudContainer>
+                </MudCard>
+            </MudItem>
+
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+
+
+@code
+{
+    Customer customerRecords = new Customer();
+
+
+}

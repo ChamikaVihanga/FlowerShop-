@@ -1,0 +1,365 @@
+﻿@page "/Flower"
+@inject HttpClient httpClient
+@using TestFlower01.Shared.Entities
+@using System.Text.Json
+@inject ISnackbar Snackbar
+@using static System.Net.WebRequestMethods
+
+
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudPaper Elevation="0">
+            <MudItem xs="12">
+                <MudPaper Elevation="5" Class="d-flex align-center justify-center mud-width-full py-4">
+                    <MudButton Href="/" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Home</MudButton>
+                    <MudButton Href="Flower" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> -    Flowers    -</MudButton>
+                    <MudButton Href="Oder" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Oder </MudButton>
+                </MudPaper>
+            </MudItem>
+            <br />
+            <MudItem xs="12">
+                <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-4">
+                    <MudImage Src="https://rogerflorist.s3.amazonaws.com/images/birthday-cat-bnn.png"></MudImage>
+                </MudPaper>
+            </MudItem>
+            <br />
+            <MudGrid>
+                @* <MudItem xs="6">
+                <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                <MudCarousel Class="mud-width-full rounded-3" Style="height:400px; width:400opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                <MudCarouselItem Transition="transition" Class="d-flex align-center justify-center mud-width-full">
+                <div class="d-flex" style="height:100%">
+                <MudImage Src="https://northumbrianflowers.co.uk/wp-content/uploads/2021/04/Northumbrian-Flowers-wreath-logo-v2.jpg" />
+                </div>
+                </MudCarouselItem>
+                <MudCarouselItem Transition="transition" Class="d-flex align-center justify-center mud-width-full">
+                <div class="d-flex" style="height:100%">
+                <MudImage Src="https://imgcdn.floweraura.com/DSC_0481.jpg" />
+                </div>
+                </MudCarouselItem>
+                <MudCarouselItem Transition="transition" Class="d-flex align-center justify-center mud-width-full">
+                <div class="d-flex" style="height:100%">
+                <MudImage Src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDaS9f_0vo5GFRCqcZkmlpyDefIugwEUDD1Q&usqp=CAU" />
+                </div>
+                </MudCarouselItem>
+                </MudCarousel>
+                </MudPaper>
+                </MudItem>
+                <MudItem xs="6">
+                <MudPaper Elevation="0" Class="align-center justify-center mud-width-full py-8" Style="color:black">
+                <MudCard>
+                <MudCardHeader>
+                <MudText Align="Align.Center">
+                <h3><b>Birthday Flowers</b></h3>
+                </MudText>
+                </MudCardHeader>
+                </MudCard>
+
+                <MudText Align="Align.Center">
+                What separates us from everyone else is not only about sending the absolute most stunning and
+                expertly arranged birthday Bouquets. Yes, our flowers are made with passion and a loving heart trying to win you
+                as a repeat customer but we also pay attention to all the details for every order. We read the card messages very
+                carefully, and we understand and execute special requests like no one else! Are you sending birthday flowers to a
+                business that closes at 1pm? Do you maybe need to get the flowers delivered in under 45 minutes? WE ARE ON IT! Our customer service and dedication to our customers is the absolute best and we have proved this for over 15 years.
+                We answer our emails within seconds and always find a way to execute every order we get.
+                </MudText>
+                </MudPaper>
+                </MudItem>*@
+                <MudItem xs="4">
+                    <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                        <MudCard>
+                            <MudCarousel Class="mud-width-full rounded-3" Style="height:350px; width:250opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                                <MudPaper>
+                                    <MudCarouselItem>
+                                        <MudCardMedia Image="https://imgcdn.floweraura.com/DSC_0481.jpg" Height="400" Widht />
+                                    </MudCarouselItem>
+                                    <MudCarouselItem>
+                                        <MudCardMedia Image="https://lh3.googleusercontent.com/iY9Y9Z_64RKGxE3EWjk5m52UoH3UJyewBTVMohfQMqUdc4Rv3qcbJaw7lNgFvkTzVUbXL887TPpMOnk0_TD8LEQNLLuMuF2RXD8=s360" Height="350" />
+                                    </MudCarouselItem>
+                                </MudPaper>
+
+                            </MudCarousel>
+                            <MudCardContent>
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.h5"><b>Birthday Flowers</b></MudText>
+                                <br />
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.body2">
+                                    What separates us from everyone else is not only about sending the absolute most stunning and
+                                    expertly arranged birthday Bouquets. Yes, our flowers are made with passion and a loving heart trying to win you
+                                    as a repeat customer but we also pay attention to all the details for every order. We read the card messages very
+                                    carefully, and we understand and execute special requests like no one else! Are you sending birthday flowers to a
+                                    business that closes at 1pm? Do you maybe need to get the flowers delivered in under 45 minutes? WE ARE ON IT! Our customer service and dedication to our customers is the absolute best and we have proved this for over 15 years.
+                                    We answer our emails within seconds and always find a way to execute every order we get.
+                                </MudText>
+                                @*<MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>*@
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                                <MudSpacer></MudSpacer>
+                                <MudButton Variant="Variant.Filled" Color="Color.Success">More</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="4">
+                    <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                        <MudCard>
+                            <MudCarousel Class="mud-width-full rounded-3" Style="height:350px; width:250opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://www.indiagift.in/media/images/product/201904151555313656.jpg" Height="400" />
+                                </MudCarouselItem>
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://www.dialabouquet.in/wp-content/uploads/2020/07/25th-Anniversary-Arrangement.jpg" Height="350" />
+                                </MudCarouselItem>
+                            </MudCarousel>
+                            <MudCardContent>
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.h5"><b>Anniversary Flowers.</b></MudText>
+                                <br />
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.body2">
+                                    Why makes us a community choice for over 15 years? We will not only send expertly arranged Anniversary Flowers for you but we will
+                                    do it timely and in a very professional manner. We can
+                                    send your order out within 45 minutes and we do all the follow up to make sure your recipient received their bouquet.
+                                    We understand the importance of anniversary flowers in that they must look absolutely spectacular and they must be delivered timely as requested by you. We do customer service with our loving hearts and our results are phenomenal! Our dedication to our customers and our passion for our job is what sets us apart from everyone else. We thank you for trusting us to send flowers for you for such an important occasion
+                                </MudText>
+                                @*<MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>*@
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                                <MudSpacer></MudSpacer>
+                                <MudButton Variant="Variant.Filled" Color="Color.Success">More</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="4">
+                    <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                        <MudCard>
+                            <MudCarousel Class="mud-width-full rounded-3" Style="height:350px; width:250opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://floweraura-blog-img.s3.ap-south-1.amazonaws.com/Flower-Gift/wish-them-well-with-get-well-soon-flowers-cover.jpg" Height="400" />
+                                </MudCarouselItem>
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://www.terrafolia.ca/wp-content/uploads/2022/06/get-better-bouquet-dx-l.jpg" Height="350" />
+                                </MudCarouselItem>
+                            </MudCarousel>
+                            <MudCardContent>
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.h5"><b>Get Well Flowers. </b></MudText>
+                                <br />
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.body2">
+                                    Hello! How are you doing today? We want you to know that we are different from everyone else in that not
+                                    only we send the most amazing flower arrangements but we are fanatical about customer service and follow ups. We
+                                    absolutely know what to do for hospital deliveries and work our way around different issues. We can send flowers
+                                    out in under 45 minutes and we are super fast in answering our emails where we reply to emails within seconds! We
+                                    have been in business for over 15 Years
+                                    because of our loving and loyal customers. We appreciate your continued support and thank you for your business!
+                                    We answer our emails within seconds and always find a way to execute every order we get.
+                                </MudText>
+                                @*<MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>*@
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                                <MudSpacer></MudSpacer>
+                                <MudButton Variant="Variant.Filled" Color="Color.Success">More</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="4">
+                    <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                        <MudCard>
+                            <MudCarousel Class="mud-width-full rounded-3" Style="height:350px; width:250opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://cdn1.1800flowers.com/wcsstore/Flowers/images/catalog/95097lx.jpg" Height="400" />
+                                </MudCarouselItem>
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://fyf.tac-cdn.net/images/products/small/BN91287.jpg?auto=webp&quality=60&width=650" Height="350" />
+                                </MudCarouselItem>
+                            </MudCarousel>
+                            <MudCardContent>
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.h5"><b>Funeral Service Bouquets</b></MudText>
+                                <br />
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.body2">
+                                    Hello! Too our loyal customers and new customers we want to send our deepest sympathies.
+                                    We are grateful for your loyalty and for our new customers we are thankful for the new opportunity to
+                                    send a funeral bouquet to the service on your behalf. We have been in business for over 15 years because we send
+                                    the absolute best quality with fresh flowers and we always work so hard to make sure your flowers are sent timely
+                                    without a hitch! In fact, we do customer service from our hearts and we try the best for all our customers all the
+                                    time! Thank you for the opportunity to go to work for you and we promise to do our best as we always do. Thanks for
+                                    your loyalty and support!
+                                </MudText>
+
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                                <MudSpacer></MudSpacer>
+                                <MudButton Variant="Variant.Filled" Color="Color.Success">More</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="4">
+                    <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                        <MudCard>
+                            <MudCarousel Class="mud-width-full rounded-3" Style="height:350px; width:250opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://static-01.daraz.lk/p/debea58c85a1c8767676c79b0c58b766.jpghttps://static-01.daraz.lk/p/debea58c85a1c8767676c79b0c58b766.jpg" Height="400" />
+                                </MudCarouselItem>
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://i.pinimg.com/736x/a4/6b/d7/a46bd7cf391c26c07e4a0fbd95817b5c.jpg" Height="350" />
+                                </MudCarouselItem>
+                            </MudCarousel>
+                            <MudCardContent>
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.h5"><b>Business Gift</b></MudText>
+                                <br />
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.body2">
+                                    Congrats! We want to let you know about our Business Gifts flowers and why people love us for over 15 years! Not only will we have a spectacular
+                                    bouquet designed for your loved one but we will do absolute phenomenal service to make sure everything goes right!
+                                </MudText>
+
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                                <MudSpacer></MudSpacer>
+                                <MudButton Variant="Variant.Filled" Color="Color.Success">More</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="4">
+                    <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                        <MudCard>
+                            <MudCarousel Class="mud-width-full rounded-3" Style="height:350px; width:250opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://cdn.thefloristmarket.com/cdn/images/vendoritem/thefloristmarket-heramour-32374-38449_1080x1080.jpg" Height="400" />
+                                </MudCarouselItem>
+                                <MudCarouselItem>
+                                    <MudCardMedia Image="https://asset.bloomnation.com/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1605616391/vendor/6258/catalog/product/e/n/endless_romance_bouquet_by_teleflora_9_1_67.jpg" Height="350" />
+                                </MudCarouselItem>
+                            </MudCarousel>
+                            <MudCardContent>
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.h5"><b>Love And Romance </b></MudText>
+                                <br />
+                                <MudText style="font-family: 'Righteous', cursive;" Align="Align.Center" Typo="Typo.body2">
+                                    We want to let you know about our Love and Romance flowers and why people love us for over 15 years!
+                                    Not only will we have a spectacular bouquet designed for your loved one but we will do absolute phenomenal service to make
+                                    sure everything goes right! We read the card messages, take notes of special instructions and we can even have a driver go out
+                                    on a whim for you! Deliveries in under 45 minutes is something we do best and it is because we understand the meaning and what
+                                    goes behind a gift of flowers, especially for a love and romance occasion. We are always here for you to follow up and to make
+                                    sure your flowers are amazing and delivered timely, EVERY TIME! Thank you for your loyalty and support!
+                                </MudText>
+
+                            </MudCardContent>
+                            <MudCardActions>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                                <MudSpacer></MudSpacer>
+                                <MudButton Variant="Variant.Filled" Color="Color.Success">More</MudButton>
+                            </MudCardActions>
+                        </MudCard>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudPaper>
+    </MudItem>
+    <MudGrid>
+        <MudItem xs="12">
+            <MudPaper Elevation="3" Class="align-center justify-center mud-width-full py-2">
+                <MudContainer>
+                    <MudCard>
+                        <MudCardHeader>
+                            <MudText style="font-family: 'Righteous', cursive;">Enter  Flower Detail</MudText>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            <MudContainer>
+                                <MudItem xs="6" Class="d-flex align-center justify-center mud-width-full py-3">
+                                    <MudTextField @bind-Value="flowerRecord.Name" Label="Flower Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                                </MudItem>
+                                <MudItem xs="6" Class="d-flex align-center justify-center mud-width-full py-3">
+                                    <MudTextField @bind-Value="flowerRecord.Cloure" Label="Flower Colour" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                                </MudItem>
+                                <MudItem xs="6" Class="d-flex align-center justify-center mud-width-full py-3">
+                                    <MudSelect @bind-Value="flowerRecord.Type" Label="Type" Variant="Variant.Outlined" Margin="Margin.Dense">
+                                        <MudSelectItem Value="@("Anniversary")" />
+                                        <MudSelectItem Value="@("Get Well")" />
+                                        <MudSelectItem Value="@("New Baby")" />
+                                        <MudSelectItem Value="@("Love And Romance")" />
+                                        <MudSelectItem Value="@("Business Gift")" />
+                                        <MudSelectItem Value="@("Birthday")" />
+                                        <MudSelectItem Value="@("Funeral")" />
+                                    </MudSelect>
+                                </MudItem>
+                                <MudItem xs="6" Class="d-flex align-center justify-center mud-width-full py-3">
+                                    <MudTextField @bind-Value="flowerRecord.Price" Label="Amount" Adornment="Adornment.Start" AdornmentText="RS." Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                                </MudItem>
+                                <MudItem xs="12" Class="d-flex align-center justify-center mud-width-full mt-5">
+                                    @if (flowerRecord.Name != null && flowerRecord.Type != null)
+                                    {
+                                        <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="PostFlowerRecord"> Save Flower Records </MudButton>
+                                    }
+                                </MudItem>
+                            </MudContainer>
+                        </MudCardContent>
+                    </MudCard>
+                </MudContainer>
+
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+</MudGrid>
+
+
+@code {
+    private bool arrows = true;
+    private bool bullets = true;
+    private bool enableSwipeGesture = true;
+    private bool autocycle = true;
+    private Transition transition = Transition.Fade;
+
+    public string TName { get; set; }
+
+    Flower flowerRecord = new Flower();
+
+    protected async Task PostFlowerRecord()
+    {
+        flowerRecord.Id = 0;
+        var response = await httpClient.PostAsJsonAsync<Flower>("api/Flowers/saveFlowerDetails", flowerRecord);
+        string message = response.Content.ReadAsStringAsync().Result;
+        ShowSusscessfullMessage(message);
+
+        ClearForm();
+
+    }
+
+
+    protected async Task PostFalowerAPI()
+    {
+        flowerRecord.Id = 0;
+        var response = await httpClient.PostAsJsonAsync<Flower>("api/Flowers/saveFlowerDetails", flowerRecord);
+        string message = await response.Content.ReadAsStringAsync();
+        @*PostFlowerRecord();*@
+        ClearForm();
+        ShowSusscessfullMessage(message);
+    }
+
+    private void ClearForm()
+    {
+        flowerRecord.Name = null;
+        flowerRecord.Cloure = null;
+        flowerRecord.Type = null;
+        flowerRecord.Price = null;
+    }
+
+    public void ShowSusscessfullMessage(string val)
+    {
+        Snackbar.Add($"{val}", Severity.Success, (options) =>
+    {
+        options.CloseAfterNavigation = true;
+    });
+    }
+}

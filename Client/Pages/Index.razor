@@ -1,0 +1,138 @@
+﻿@page "/"
+<PageTitle>Index</PageTitle>
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudGrid>
+            <MudItem xs="12">
+                <MudPaper Elevation="5" Class="d-flex align-center justify-center mud-width-full py-4">
+                    <MudButton Href="" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Home</MudButton>
+                    <MudButton Href="Flower" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> -    Flowers    -</MudButton>
+                    <MudButton Href="Oder" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Oder    - </MudButton>
+                    <MudButton Href="Customer" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Customer </MudButton>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="6">
+                <MudPaper Elevation="0" Class="align-center justify-center mud-width-full py-8">
+                    <MudCard Elevation="0" Style="height:700px; width:700px">
+                        <MudCardHeader>
+                            <MudText Align="Align.Center" style="font-family: 'Righteous', cursive; font-size:80px">Hansi Lotas Mart</MudText>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            <MudText Color="Color.Secondary" Align="Align.Center" style="font-family: 'Dancing Script', cursive; font-size:60px;">
+                                Oder Early For Valentines day!!
+                                <div>
+                                    02.14
+                                </div>
+                            </MudText>
+                        </MudCardContent>
+                        <hr />
+                    </MudCard>
+
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="6">
+                <MudPaper Elevation="0" Class="d-flex align-center justify-center mud-width-full py-8">
+                    <MudCarousel Class="mud-width-full rounded-3" Style="height:700px; width:700opx;" TData="object" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle">
+                        <MudCarouselItem Transition="transition">
+                            <div class="d-flex" style="height:100%">
+                                <MudImage Src="https://northumbrianflowers.co.uk/wp-content/uploads/2021/04/Northumbrian-Flowers-wreath-logo-v2.jpg" />
+                            </div>
+                        </MudCarouselItem>
+                        <MudCarouselItem Transition="transition">
+                            <div class="d-flex" style="height:100%">
+                                <MudImage Src="https://www.scentandviolet.com/files/cache/1be5484e2e2c13690da01c5f143947fe_f4639.jpg" />
+                            </div>
+                        </MudCarouselItem>
+                        <MudCarouselItem Transition="transition">
+                            <div class="d-flex" style="height:100%">
+                                <MudImage Src="https://i1.wp.com/eastendflowerco.com/wp-content/uploads/2022/07/EE-FLW-Refit-3-1-1024x683.jpg?ssl=1" />
+                            </div>
+                        </MudCarouselItem>
+                    </MudCarousel>
+                </MudPaper>
+            </MudItem>
+
+        </MudGrid>
+    </MudItem>
+</MudGrid>
+
+<div class="row mb-5">
+    <div class="col">
+        <div class="text-center">
+            <h2>Hansi Flower<span class="badge bg-primary">New</span></h2>
+
+            <h5>up Coming Discount Time</h5>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col">
+        <h3 class="text-center">Timeline</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+
+
+        <MudTimeline TimelineAlign="TimelineAlign.Start">
+            <MudTimelineItem Color="Color.Info" Size="Size.Small">
+                <ItemOpposite>
+                    <MudText Color="Color.Info" Typo="Typo.h5">2022.february</MudText>
+                </ItemOpposite>
+
+                <ItemContent>
+                    <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Start Discount Date</MudText>
+                    <MudText>February Discount For you. Get your bouquet today. </MudText>
+                </ItemContent>
+
+
+            </MudTimelineItem>
+            <MudTimelineItem Color="Color.Success" Size="Size.Small">
+                <ItemOpposite>
+                    <MudText Color="Color.Success" Typo="Typo.h5">2022.Februrary.12 to 2022.Februrary.14</MudText>
+                </ItemOpposite>
+                <ItemContent>
+                    <MudText Color="Color.Success" Typo="Typo.h6" GutterBottom="true">Cool Discount</MudText>
+                    <MudText>20% heart max discount For Cupals. Book now for your girlfriend </MudText>
+                </ItemContent>
+            </MudTimelineItem>
+            <MudTimelineItem Color="Color.Error" Size="Size.Small">
+                <ItemOpposite>
+                    <MudText Color="Color.Error" Typo="Typo.h5">2021.Februrary.28</MudText>
+                </ItemOpposite>
+                <ItemContent>
+                    <MudText Color="Color.Error" Typo="Typo.h6" GutterBottom="true">End Of Discount</MudText>
+                </ItemContent>
+            </MudTimelineItem>
+        </MudTimeline>
+
+
+    </div>
+</div>
+
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code
+{
+    ObjectFit ImageFit = ObjectFit.Cover;
+
+    void SetImageFit(ObjectFit value)
+    {
+        ImageFit = value;
+    }
+
+    private bool arrows = false;
+
+    private bool bullets = false;
+    private bool enableSwipeGesture = true;
+    private bool autocycle = true;
+    private Transition transition = Transition.Fade;
+}
