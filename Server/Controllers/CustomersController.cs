@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using TestFlower01.Server.Data;
 using TestFlower01.Shared.Entities;
 
@@ -78,10 +79,23 @@ namespace TestFlower01.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            _context.Customers.Add(customer);
+            if (_context.Customers!= null)
+            {
+                return NotFound();
+            }
+
+            Customer getCustomer = new Customer();
+            getCustomer.Id = customer.Id;
+            getCustomer.Name = customer.Name;  
+            getCustomer.Email = customer.Email;
+            getCustomer.Phone = customer.Phone;
+
+            _context.Customers.Add(getCustomer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
+            return Ok("Successfully Created");
+
+            /*return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);*/
         }
 
         // DELETE: api/Customers/5
