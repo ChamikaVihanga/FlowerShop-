@@ -76,24 +76,24 @@ namespace TestFlower01.Server.Controllers
 
         // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("saveCustomerData")]
         public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            if (_context.Customers!= null)
+            if (_context.Customers == null)
             {
                 return NotFound();
             }
-
             Customer getCustomer = new Customer();
             getCustomer.Id = customer.Id;
             getCustomer.Name = customer.Name;  
             getCustomer.Email = customer.Email;
             getCustomer.Phone = customer.Phone;
+            getCustomer.Address = customer.Address;
 
             _context.Customers.Add(getCustomer);
             await _context.SaveChangesAsync();
 
-            return Ok("Successfully Created");
+            return Ok("Successfully Created Customer");
 
             /*return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);*/
         }

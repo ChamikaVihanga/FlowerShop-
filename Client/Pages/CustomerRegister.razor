@@ -1,5 +1,7 @@
 ﻿@page "/Customer"
 @using TestFlower01.Shared.Entities
+@inject HttpClient httpClint
+@inject ISnackbar Snackbar
 
 <MudGrid>
     <MudItem xs="12">
@@ -26,19 +28,19 @@
                     </MudText>
                     <MudContainer>
                         <MudItem xs="12" Style="text-align:center" Class=" align-center justify-center mud-width-full py-3">
-                            <MudTextField T="string" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                            <MudTextField @bind-Value="customerRecords.Name" Label="Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
                         </MudItem>
                         <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
-                            <MudTextField T="string" Label="Address" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                            <MudTextField @bind-Value="customerRecords.Address" Label="Address" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
                         </MudItem>
                         <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
-                            <MudTextField T="string" Label="Email" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                            <MudTextField @bind-Value="customerRecords.Email" Label="Email" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
                         </MudItem>
                         <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
-                            <MudTextField T="string" Label="Contact Number" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                            <MudTextField @bind-Value="customerRecords.Phone" Label="Contact Number" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
                         </MudItem>
                         <MudItem xs="12" Class="d-flex align-center justify-center mud-width-full mt-5">
-                            <MudButton Variant="Variant.Filled" Color="Color.Success"> Register Customer </MudButton>
+                            <MudButton Variant="Variant.Filled" @onclick="PostCustomerAPI" Color="Color.Success"> Register Customer </MudButton>
                         </MudItem>
                     </MudContainer>
                 </MudCard>
@@ -54,5 +56,40 @@
 {
     Customer customerRecords = new Customer();
 
+    protected async Task postCustomer()
+    {
+        customerRecords.Id = 0;
+        var response = await httpClint.PostAsJsonAsync<Customer>("api/Customers/saveCustomerData", customerRecords);
+        string message = response.Content.ReadAsStringAsync().Result;
+        if (message != null)
+        {
+            ShowSusscessfullMessage(message);
+        }                   
+        ClearForm();
+
+    }
+    protected async Task PostCustomerAPI()
+    {
+        customerRecords.Id = 0;
+        var response = await httpClint.PostAsJsonAsync<Customer>("api/Customers/saveCustomerData", customerRecords);
+        string message = await response.Content.ReadAsStringAsync();
+        ClearForm();
+        ShowSusscessfullMessage(message);
+    }
+    private void ClearForm()
+    {
+        customerRecords.Name = null;
+        customerRecords.Address = null;
+        customerRecords.Email = null;
+        customerRecords.Phone = null;
+    }
+
+    public void ShowSusscessfullMessage(string val)
+    {
+        Snackbar.Add($"{val}", Severity.Success, (options) =>
+    {
+        options.CloseAfterNavigation = true;
+    });
+    }
 
 }

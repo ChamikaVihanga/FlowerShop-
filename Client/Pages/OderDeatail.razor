@@ -1,0 +1,97 @@
+﻿@page "/Oder"
+@inject ISnackbar Snackbar
+
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudPaper Elevation="0">
+            <MudItem xs="12">
+                <MudPaper Elevation="5" Class="d-flex align-center justify-center mud-width-full py-4">
+                    <MudButton Href="/" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Home</MudButton>
+                    <MudButton Href="Flower" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> -    Flowers    -</MudButton>
+                    <MudButton Href="Oder" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Oder - </MudButton>
+                    <MudButton Href="Customer" style="font-family: 'Righteous', cursive; font-size:larger" Variant="Variant.Text"> Customer </MudButton>
+                </MudPaper>
+            </MudItem>
+
+            <br />
+            <br />
+            <MudItem xs="12">
+
+            </MudItem>
+            <MudItem xs="12" Class="d-flex align-center justify-center mud-width-full py-4">
+                <MudCard Elevation="0">
+
+                    <MudText Align="Align.Center" style="font-family: 'Righteous', cursive; font-size:60px">
+                        <b>Flower Oder now</b>
+                    </MudText>
+                    <MudContainer>
+                        <MudItem xs="12" Style="text-align:center" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField @bind-Value="CName" Label="Customer Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField @bind-Value="Adderss" Label="Adderss" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField @bind-Value="FlowerName" Label="Flower Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField @bind-Value="Colour" Label="Colour" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField @bind-Value="Contity" Label="Contity" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class=" align-center justify-center mud-width-full py-3">
+                            <MudTextField @bind-Value="Price" Label="Price" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+                        </MudItem>
+                        <MudItem xs="12" Class="d-flex align-center justify-center mud-width-full mt-5">
+                            <MudDatePicker Label="Oder Date" Editable="true" @bind-Date="date2" Mask="@(new DateMask("MM/dd/yyyy"))" DateFormat="MM/dd/yyyy" Placeholder="en-US Date" />
+                        </MudItem>
+                        
+                        <MudItem xs="12" Class="d-flex align-center justify-center mud-width-full mt-5">
+                            @if (CName == null || Adderss == null || FlowerName == null)
+                            {
+                                <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="true" @onclick="SnackBar"> Oder now </MudButton>
+                            }
+                            else
+                            {
+                                <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="SnackBar"> Oder now </MudButton>
+                            }
+                            
+                        </MudItem>
+                    </MudContainer>
+                </MudCard>
+            </MudItem>
+
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+
+@code {
+    DateTime? date2 = DateTime.Today;
+
+    public string CName { get; set; }
+    public string Adderss { get; set; }
+    public string FlowerName { get; set; }
+    public string Colour { get; set; }
+    public string Contity { get; set; }
+    public string Price { get; set; }
+
+    public void SnackBar()
+    {
+        Snackbar.Add("The Oder was Saved successfully", Severity.Success);
+        CleanForm();
+    }
+
+    private void CleanForm()
+    {
+        CName = null;
+        Adderss = null;
+        FlowerName = null;
+        Colour = null;
+        Contity = null;
+        Price = null;
+
+    }
+}
